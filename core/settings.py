@@ -31,14 +31,35 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # System
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'rest_framework',
+
+    # User
     'users',
+
+    # packages  # make sure sites is included
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # the social providers
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
 ]
+SITE_ID = 1
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
